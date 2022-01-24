@@ -1,0 +1,15 @@
+#! /bin/bash -eu
+set -o pipefail
+cd $(dirname $0) && cd ../..
+
+echo "Running gradlew detekt code style check..."
+./gradlew detekt --daemon
+status=$?
+
+if [ "$status" = 0 ] ; then
+    echo "Running './gradlew detekt' code style check success!"
+    exit 0
+else
+    echo 1>&2 "Running './gradlew detekt' code style check fail..."
+    exit 1
+fi

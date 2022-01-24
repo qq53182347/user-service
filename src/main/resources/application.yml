@@ -1,0 +1,64 @@
+server:
+  port: 8090
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types:
+      - application/json
+
+spring:
+  devtools:
+    restart:
+      log-condition-evaluation-delta: true
+    add-properties: false
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: user-service
+  profiles:
+    active: local
+
+management:
+  health:
+    diskspace:
+      enabled: false
+  info:
+    git:
+      mode: full
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+    shutdown:
+      enabled: false
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    tags.*:
+      service: user-service
+    enable:
+      tomcat: false
+      jvm: false
+      process: false
+      hikaricp: false
+      system: false
+      jdbc: false
+      logback: false
+      spring: false
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    path: /api-docs/swagger-ui.html
+
+logging:
+  level:
+    com.tw.user: INFO
+    org.springframework.*: INFO
+    org.springframework.boot.actuate.*: WARN

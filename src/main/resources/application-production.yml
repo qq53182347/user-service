@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+management:
+  endpoint:
+    health:
+      enabled: true
+    info:
+      enabled: true
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: "health,info,metrics,prometheus"
+

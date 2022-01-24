@@ -1,0 +1,28 @@
+server:
+  port: 8089
+
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl_auto: none
+    database: mysql
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+  flyway:
+    enabled: false
+    encoding: UTF-8
+    locations: classpath:db/migration
+    baseline-on-migrate: false
+    url: jdbc:mysql://localhost:3306/user
+    schemas: user
+    user: root
+    password: 123456
+    clean-disabled: true
+    sqlMigrationPrefix: V
+    sqlMigrationSeparator: __
+    sqlMigrationSuffixes: .sql
+    validateOnMigrate: false

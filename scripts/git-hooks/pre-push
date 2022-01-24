@@ -1,0 +1,15 @@
+#! /bin/bash -eu
+set -o pipefail
+cd $(dirname $0) && cd ../..
+
+echo "Running gradlew test..."
+./gradlew test --daemon
+status=$?
+
+if [ "$status" = 0 ] ; then
+    echo "Running './gradlew test' success."
+    exit 0
+else
+    echo 1>&2 "Running './gradlew test' fail."
+    exit 1
+fi
